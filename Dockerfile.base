@@ -1,0 +1,29 @@
+FROM python:3.10.12
+
+# Install necessary packages
+RUN apt-get update && apt-get install -y git
+
+# Clone the repository
+RUN git clone https://github.com/richardpaulhudson/coreferee
+
+# Change to the repository directory
+WORKDIR /coreferee
+
+# Modify the setup.cfg file
+RUN sed -i '39s/spacy>=3.0.0,<3.6.0/spacy>=3.0.0,<3.8.0/' setup.cfg && \
+    sed -i 's/to_version:             3.3.0/to_version:             3.8.0/g' coreferee/lang/en/config.cfg
+
+# Verify the change
+RUN cat setup.cfg | grep spacy
+
+RUN pip install --upgrade pip
+
+# Install the package
+RUN pip install .
+
+# Install additional packages
+RUN pip install llama-index-extractors-relik llama-index-graph-stores-neo4j llama-index-llms-openai llama-index
+
+# Download spacy model and install coreferee
+RUN python -m spacy download en_core_web_lg && \
+    python -m coreferee install en
