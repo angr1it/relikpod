@@ -1,10 +1,16 @@
+### Notebooks
+
+```
+docker-compose up --profile notebooks
+```
 
 ### BUILD
 ```
-docker build -t andgr1it/relikpod -f relikpod/Dockerfile .
+docker-compose build --profile dev
 ```
 
-### RUN
+### PUSH
 ```
-docker run andgr1it/relikpod 
+docker push andgr1it/relikpod-base:latest
+docker push andgr1it/relikpod:latest
 ```

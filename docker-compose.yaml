@@ -1,0 +1,37 @@
+version: '3.9'
+
+services:
+  relikpod-base:
+    container_name: relikpod-base
+    profiles: ['dev', 'notebooks']
+    build:
+      context: .
+      dockerfile: Dockerfile.base
+    image: andgr1it/relikpod-base:latest
+
+  notebooks:
+    container_name: relikpod-notebooks
+    profiles: ['notebooks']
+    build:
+      context: .
+      dockerfile: Dockerfile.jupyter
+    depends_on:
+      - relikpod-base
+    networks:
+      - relikpod-notebook
+    volumes:
+      - .:/app
+
+  relikpod:
+    container_name: relikpod
+    profiles: ['dev']
+    build:
+      context: .
+      dockerfile: Dockerfile.relikpod
+    depends_on:
+      - relikpod-base
+    image: andgr1it/relikpod:latest
+
+networks:
+  relikpod-notebook:
+    driver: bridge

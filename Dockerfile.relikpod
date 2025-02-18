@@ -1,9 +1,9 @@
-FROM relikpod_base:latest
+FROM andgr1it/relikpod-base:latest
 
 WORKDIR /app
 
-COPY ./relikpod ./relikpod
-COPY ./relikpod/.env ./.env
+COPY . ./relikpod
+COPY .env .env
 
 RUN pip install -r relikpod/requirements.txt
 

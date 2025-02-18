@@ -1,4 +1,4 @@
-FROM relikpod_base:latest
+FROM andgr1it/relikpod-base:latest
 
 WORKDIR /app
 
