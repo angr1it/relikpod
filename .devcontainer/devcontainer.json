@@ -1,11 +1,11 @@
 {
     "name": "relikpod-notebooks",
     "dockerComposeFile": [
-        "../docker-compose.yml"
+        "../docker-compose.yaml"
     ],
     "service": "notebooks",
     "runServices": [
-        "base", "notebooks"
+         "notebooks"
     ],
     "workspaceFolder": "/app",
     "customizations": {

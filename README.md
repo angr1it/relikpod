@@ -1,12 +1,12 @@
 ### Notebooks
 
 ```
-docker-compose up --profile notebooks
+docker compose --profile notebooks up
 ```
 
 ### BUILD
 ```
-docker-compose build --profile dev
+docker compose --profile dev build
 ```
 
 ### PUSH

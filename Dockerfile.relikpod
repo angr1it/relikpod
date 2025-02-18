@@ -1,6 +1,6 @@
 FROM andgr1it/relikpod-base:latest
 
-WORKDIR /app
+WORKDIR /home/relik-user/relik
 
 COPY . ./relikpod
 COPY .env .env

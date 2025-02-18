@@ -1,6 +1,6 @@
 FROM andgr1it/relikpod-base:latest
 
-WORKDIR /app
+WORKDIR /home/relik-user/relik
 
 # Install Jupyter Notebook
 RUN pip install jupyter
